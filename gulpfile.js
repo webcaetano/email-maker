@@ -8,7 +8,7 @@ var wrench = require('wrench');
 var options = {
   src: 'src',
   dist: 'dist',
-  tmp: '.tmp'
+  tmp: '.tmp',
   errorHandler: function(title) {
     return function(err) {
       gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
