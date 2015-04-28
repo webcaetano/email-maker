@@ -60,7 +60,7 @@ module.exports = function(options) {
 				from: gmailCredentials.user, // sender address
 				to: gmailCredentials.user, // list of receivers
 				subject: 'Test Email Template  ✔', // Subject line
-				html: cheerio.load(fs.readFileSync(options.tmp + '/serve/index.html'))('.email-template').html()
+				html: cheerio.load(fs.readFileSync(options.tmp + '/serve/index.html'))('.email-template').parent().html()
 			};
 
 			transporter.sendMail(mailOptions, function(error, info){

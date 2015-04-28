@@ -1,30 +1,84 @@
 @import 'bower_components/compass-mixins/lib/_compass.scss';
+$email_size:600px;
 
 body {
-	background-color: #f8f8f8;
+	// background-color: #f8f8f8;
 	padding: 0;
 	margin: 20px 0;
 }
 
+.link {
+	text-decoration: none;
+}
+
+
 .email-template {
 	margin: 0 auto;
-	width: 600px;
-	height: 700px;
+	width: $email_size;
+	// height: 700px;
 	background-color: #fff;
 	@include box-shadow(rgba(#000, 0.15) 0px 0px 10px);
+	background-color: #f9f9f9;
 }
 
 .header {
 	width: 100%;
 	height: 200px;
 	text-align: center;
-	font-size: 60px;
-	text-transform: uppercase;
-	line-height: 200px;
+
+
+	// line-height: 200px;
 	background-color: #604687;
+
+
+	.title {
+		font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+		font-weight: bold;
+		color: #fff;
+		font-size: 50px;
+		width: 100%;
+		height: 160px;
+		// background-color: red;
+		line-height: 155px;
+		text-transform: uppercase;
+	}
+
+	.navbar {
+		width: 100%;
+		table {
+			border-collapse: collapse;
+		}
+		table td{
+			padding: 0;
+			margin: 0;
+		}
+		.btn {
+			text-decoration: none;
+			cursor: pointer;
+			width: 150px;
+			text-align: center;
+			color: #fff;
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			text-transform: uppercase;
+		}
+	}
+}
+
+.body {
+	padding: 10px;
 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	font-weight: bold;
-	color: #fff;
+	font-size: 14px;
+	min-height: 200px;
+}
+.footer {
+	// width: 100%;
+	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	padding: 10px;
+	font-size: 12px;
+	color: #616161;
+	text-align: center;
+	vertical-align: bottom;
+	padding-bottom: 20px;
 }
 
 // injector

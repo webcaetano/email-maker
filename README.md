@@ -1,10 +1,12 @@
 # Email Template Maker 
 
+#### Project road : 
+
 - [x] Create Repo
 - [x] Add Inline Style
 - [x] Add Gmail SMTP Test
-- [ ] Create Documentation
-- [ ] Create an Example
+- [x] Create Documentation
+- [x] Create an Example
 - [ ] Make Yeoman Generator based on this project for SASS / Less switch
 
 ### Requirements
