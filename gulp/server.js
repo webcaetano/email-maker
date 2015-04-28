@@ -47,12 +47,4 @@ module.exports = function(options) {
   gulp.task('serve:dist', ['build'], function () {
     browserSyncInit(options.dist);
   });
-
-  gulp.task('serve:e2e', ['inject'], function () {
-    browserSyncInit([options.tmp + '/serve', options.src], []);
-  });
-
-  gulp.task('serve:e2e-dist', ['build'], function () {
-    browserSyncInit(options.dist, []);
-  });
 };
