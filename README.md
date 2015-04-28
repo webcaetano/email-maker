@@ -2,7 +2,7 @@
 
 - [x] Create Repo
 - [ ] Add Inline Style
-- [ ] Add GMAIL SMTP Test
+- [ ] Add Gmail SMTP Test
 - [ ] Create Documentation
 - [ ] Create an Example
 - [ ] Make Yeoman Generator based on this project for SASS / LessCSS switch
