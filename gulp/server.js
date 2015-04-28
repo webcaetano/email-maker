@@ -48,17 +48,20 @@ module.exports = function(options) {
 
 	gulp.task('test', [], function () {
 		var nodemailer = require('nodemailer');
-		var obj = JSON.parse(fs.readFileSync('./.gmail-credentials.json', 'utf8'));
-		console.log(obj);
-		// create reusable transporter object using SMTP transport
-		// var transporter = nodemailer.createTransport({
-		// 	service: 'Gmail',
-		// 	auth: {
-		// 		user: 'gmail.user@gmail.com',
-		// 		pass: 'userpass'
-		// 	}
-		// });
-		var $ = cheerio.load(fs.readFileSync(options.src + '/template.html'));
-		console.log($.html())
+		var gmailCredentials = JSON.parse(fs.readFileSync('./.gmail-credentials.json', 'utf8'));
+
+		var mailOptions = {
+			from: gmailCredentials.user, // sender address
+			to: gmailCredentials.user, // list of receivers
+			subject: 'Test Email Template  ✔', // Subject line
+			html: cheerio.load(fs.readFileSync(options.src + '/template.html')).html()
+		};
+		transporter.sendMail(mailOptions, function(error, info){
+			if(error){
+				console.log(error);
+			}else{
+				console.log('Message sent: ' + info.response);
+			}
+		});
 	});
 };
