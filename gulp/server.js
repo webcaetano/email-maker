@@ -3,6 +3,8 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync');
 var browserSyncSpa = require('browser-sync-spa');
+var cheerio = require('cheerio');
+var fs = require("fs");
 
 var util = require('util');
 
@@ -42,5 +44,10 @@ module.exports = function(options) {
 
 	gulp.task('serve:dist', ['build'], function () {
 		browserSyncInit(options.dist);
+	});
+
+	gulp.task('test', [], function () {
+		var $ = cheerio.load(fs.readFileSync(options.src + '/template.html'));
+		console.log($.html())
 	});
 };

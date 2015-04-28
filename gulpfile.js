@@ -5,24 +5,25 @@ var gutil = require('gulp-util');
 var _ = require('lodash');
 var wrench = require('wrench');
 
+
 var options = {
-  src: 'src',
-  dist: 'dist',
-  tmp: '.tmp',
-  errorHandler: function(title) {
-    return function(err) {
-      gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
-      this.emit('end');
-    };
-  }
+	src: 'src',
+	dist: 'dist',
+	tmp: '.tmp',
+	errorHandler: function(title) {
+		return function(err) {
+			gutil.log(gutil.colors.red('[' + title + ']'), err.toString());
+			this.emit('end');
+		};
+	}
 };
 
 wrench.readdirSyncRecursive('./gulp').filter(function(file) {
-  return (/\.(js|coffee)$/i).test(file);
+	return (/\.(js|coffee)$/i).test(file);
 }).map(function(file) {
-  require('./gulp/' + file)(options);
+	require('./gulp/' + file)(options);
 });
 
 gulp.task('default', ['clean'], function () {
-    gulp.start('build');
+	gulp.start('build');
 });
