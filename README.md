@@ -22,3 +22,7 @@ git clone https://github.com/webcaetano/email-maker.git
 cd email-maker
 npm install
 ```
+
+---------------------------------
+
+The MIT [License](https://raw.githubusercontent.com/webcaetano/email-maker/master/LICENSE.md)
