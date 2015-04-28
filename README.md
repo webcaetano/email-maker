@@ -2,7 +2,7 @@
 
 - [x] Create Repo
 - [x] Add Inline Style
-- [ ] Add Gmail SMTP Test
+- [x] Add Gmail SMTP Test
 - [ ] Create Documentation
 - [ ] Create an Example
 - [ ] Make Yeoman Generator based on this project for SASS / Less switch
@@ -22,6 +22,29 @@ git clone https://github.com/webcaetano/email-maker.git
 cd email-maker
 npm i
 ```
+
+### Commands 
+
+```
+gulp serve
+```
+Start development mode
+
+
+```
+gulp test
+```
+Send a email test for your inbox.
+
+
+```
+gulp build
+// or
+gulp 
+```
+Create html file of your template 
+
+
 
 ---------------------------------
 

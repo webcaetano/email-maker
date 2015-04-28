@@ -47,21 +47,29 @@ module.exports = function(options) {
 	});
 
 	gulp.task('test', [], function () {
-		var nodemailer = require('nodemailer');
-		var gmailCredentials = JSON.parse(fs.readFileSync('./.gmail-credentials.json', 'utf8'));
+		gulp.start('inject',function(){
+			var nodemailer = require('nodemailer');
+			var gmailCredentials = JSON.parse(fs.readFileSync('./.gmail-credentials.json', 'utf8'));
 
-		var mailOptions = {
-			from: gmailCredentials.user, // sender address
-			to: gmailCredentials.user, // list of receivers
-			subject: 'Test Email Template  ✔', // Subject line
-			html: cheerio.load(fs.readFileSync(options.src + '/template.html')).html()
-		};
-		transporter.sendMail(mailOptions, function(error, info){
-			if(error){
-				console.log(error);
-			}else{
-				console.log('Message sent: ' + info.response);
-			}
+			var transporter = nodemailer.createTransport({
+				service: 'Gmail',
+				auth: gmailCredentials
+			});
+
+			var mailOptions = {
+				from: gmailCredentials.user, // sender address
+				to: gmailCredentials.user, // list of receivers
+				subject: 'Test Email Template  ✔', // Subject line
+				html: cheerio.load(fs.readFileSync(options.tmp + '/serve/index.html'))('.email-template').html()
+			};
+
+			transporter.sendMail(mailOptions, function(error, info){
+				if(error){
+					console.log(error);
+				}else{
+					console.log('Message sent: ' + info.response);
+				}
+			});
 		});
 	});
 };
