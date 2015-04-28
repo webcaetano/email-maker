@@ -12,14 +12,14 @@ module.exports = function(options) {
     };
 
     var injectFiles = gulp.src([
-      options.src + '/{app,components}/**/*.scss',
-      '!' + options.src + '/app/index.scss',
-      '!' + options.src + '/app/vendor.scss'
+      options.src + '/{styles,components}/**/*.scss',
+      '!' + options.src + '/styles/index.scss',
+      '!' + options.src + '/styles/vendor.scss'
     ], { read: false });
 
     var injectOptions = {
       transform: function(filePath) {
-        filePath = filePath.replace(options.src + '/app/', '');
+        filePath = filePath.replace(options.src + '/styles/', '');
         filePath = filePath.replace(options.src + '/components/', '../components/');
         return '@import \'' + filePath + '\';';
       },
@@ -31,8 +31,8 @@ module.exports = function(options) {
     var indexFilter = $.filter('index.scss');
 
     return gulp.src([
-      options.src + '/app/index.scss',
-      options.src + '/app/vendor.scss'
+      options.src + '/styles/index.scss',
+      options.src + '/styles/vendor.scss'
     ])
     .pipe(indexFilter)
     .pipe($.inject(injectFiles, injectOptions))

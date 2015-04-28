@@ -9,8 +9,8 @@ var $ = require('gulp-load-plugins')({
 module.exports = function(options) {
   gulp.task('partials', function () {
     return gulp.src([
-      options.src + '/{app,components}/**/*.html',
-      options.tmp + '/serve/{app,components}/**/*.html'
+      options.src + '/{styles,components}/**/*.html',
+      options.tmp + '/serve/{styles,components}/**/*.html'
     ])
       .pipe($.minifyHtml({
         empty: true,

@@ -17,8 +17,8 @@ module.exports = function(options) {
 		});
 
 		gulp.watch([
-			options.src + '/{app,components,less}/**/*.css',
-			options.src + '/{app,components,less}/**/*.less'
+			options.src + '/{components,styles}/**/*.css',
+			options.src + '/{components,styles}/**/*.less'
 		], function(event) {
 			if(isOnlyChange(event)) {
 				gulp.start('styles',function(){
@@ -30,7 +30,7 @@ module.exports = function(options) {
 		});
 
 
-		gulp.watch(options.src + '/{app,components}/**/*.html', function(event) {
+		gulp.watch(options.src + '/{styles,components}/**/*.html', function(event) {
 			browserSync.reload(event.path);
 		});
 	});

@@ -1,7 +1,7 @@
 # Email Template Maker 
 
 - [x] Create Repo
-- [ ] Add Inline Style
+- [x] Add Inline Style
 - [ ] Add Gmail SMTP Test
 - [ ] Create Documentation
 - [ ] Create an Example
