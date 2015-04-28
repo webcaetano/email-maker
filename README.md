@@ -5,7 +5,7 @@
 - [ ] Add Gmail SMTP Test
 - [ ] Create Documentation
 - [ ] Create an Example
-- [ ] Make Yeoman Generator based on this project for SASS / LessCSS switch
+- [ ] Make Yeoman Generator based on this project for SASS / Less switch
 
 ### Requirements
 
