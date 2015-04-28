@@ -47,6 +47,17 @@ module.exports = function(options) {
 	});
 
 	gulp.task('test', [], function () {
+		var nodemailer = require('nodemailer');
+		var obj = JSON.parse(fs.readFileSync('./.gmail-credentials.json', 'utf8'));
+		console.log(obj);
+		// create reusable transporter object using SMTP transport
+		// var transporter = nodemailer.createTransport({
+		// 	service: 'Gmail',
+		// 	auth: {
+		// 		user: 'gmail.user@gmail.com',
+		// 		pass: 'userpass'
+		// 	}
+		// });
 		var $ = cheerio.load(fs.readFileSync(options.src + '/template.html'));
 		console.log($.html())
 	});
