@@ -20,7 +20,7 @@
 ```
 git clone https://github.com/webcaetano/email-maker.git
 cd email-maker
-npm install
+npm i
 ```
 
 ---------------------------------

@@ -7,29 +7,15 @@
 <meta name="viewport" content="width=device-width">
 <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
-<!-- build:css({.tmp/serve,src}) styles/vendor.css -->
-<!-- bower:css -->
-<!-- run `gulp inject` to automatically populate bower styles dependencies -->
-<!-- endbower -->
-<!-- endbuild -->
-
 <!-- build:css({.tmp/serve,src}) styles/index.css -->
 <!-- inject:css -->
 <!-- css files will be automatically insert here -->
 <!-- endinject -->
 <!-- endbuild -->
-<style>
-	p {
-		color:blue;
-	}
-	body {
-		padding: 10px;
-	}
-</style>
 </head>
 <body>
-	<p>
-		Email Template Herez
-	</p>
+	<div class="email-template">
+		@@include('./template.html')
+	</div>
 </body>
 </html>

@@ -36,10 +36,6 @@ module.exports = function(options) {
 		});
 	}
 
-	browserSync.use(browserSyncSpa({
-		selector: '[ng-app]'// Only needed for angular apps
-	}));
-
 	gulp.task('serve', ['inject','watch'], function () {
 		browserSyncInit([options.tmp + '/serve', options.src]);
 	});

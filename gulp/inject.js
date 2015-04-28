@@ -2,6 +2,7 @@
 
 var gulp = require('gulp');
 var inlineCss = require('gulp-inline-css');
+var fileinclude = require('gulp-file-include');
 
 var $ = require('gulp-load-plugins')();
 
@@ -26,7 +27,13 @@ module.exports = function(options) {
 	};
 
 	return gulp.src(options.src + '/*.html')
+		.pipe(fileinclude({
+			prefix: '@@',
+			basepath: '@file'
+		}))
+		// .pipe(gulp.dest(options.tmp + '/serve'))
 		.pipe($.inject(injectStyles, injectOptions))
+
 		//.pipe($.inject(injectScripts, injectOptions))
 		.pipe(wiredep(wiredepOptions))
 		.pipe(gulp.dest(options.tmp + '/serve'))
