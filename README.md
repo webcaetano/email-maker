@@ -25,25 +25,24 @@ npm i
 
 ### Commands 
 
+Start development mode
 ```
 gulp serve
 ```
-Start development mode
 
 
+Send a email test for your inbox.
 ```
 gulp test
 ```
-Send a email test for your inbox.
 
 
+Create html file of your template 
 ```
 gulp build
 // or
 gulp 
 ```
-Create html file of your template 
-
 
 
 ---------------------------------
