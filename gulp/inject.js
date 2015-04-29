@@ -33,10 +33,7 @@ module.exports = function(options) {
 			prefix: '@@',
 			basepath: '@file'
 		}))
-		// .pipe(gulp.dest(options.tmp + '/serve'))
 		.pipe($.inject(injectStyles, injectOptions))
-
-		//.pipe($.inject(injectScripts, injectOptions))
 		.pipe(wiredep(wiredepOptions))
 		.pipe(gulp.dest(options.tmp + '/serve'))
 		.pipe(inlineCss({
@@ -49,7 +46,7 @@ module.exports = function(options) {
 			var $ = cheerio.load(file.contents.toString(),{
 	            decodeEntities: false
 	        });
-			$('*[class], *[id]').each(function(ind,e){
+			$('.email-template *[class],.email-template *[id]').each(function(ind,e){
 				if($(e).attr('class')) $(e).removeAttr('class');
 				if($(e).attr('id')) $(e).removeAttr('id');
 			});
