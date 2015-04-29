@@ -3,6 +3,8 @@
 var gulp = require('gulp');
 var inlineCss = require('gulp-inline-css');
 var fileinclude = require('gulp-file-include');
+var through = require('through2');
+var cheerio = require('cheerio');
 
 var $ = require('gulp-load-plugins')();
 
@@ -38,11 +40,23 @@ module.exports = function(options) {
 		.pipe(wiredep(wiredepOptions))
 		.pipe(gulp.dest(options.tmp + '/serve'))
 		.pipe(inlineCss({
-                applyStyleTags: true,
-                applyLinkTags: true,
-                removeStyleTags: true,
-                removeLinkTags: true
-        }))
-        .pipe(gulp.dest(options.tmp + '/serve'));
+				applyStyleTags: true,
+				applyLinkTags: true,
+				removeStyleTags: true,
+				removeLinkTags: true
+		}))
+		.pipe(through.obj(function (file, enc, callback){
+			var $ = cheerio.load(file.contents.toString(),{
+	            decodeEntities: false
+	        });
+			$('*[class], *[id]').each(function(ind,e){
+				if($(e).attr('class')) $(e).removeAttr('class');
+				if($(e).attr('id')) $(e).removeAttr('id');
+			});
+
+			file.contents = new Buffer($.html());
+			callback(null,file);
+		}))
+		.pipe(gulp.dest(options.tmp + '/serve'));
 	});
 };
