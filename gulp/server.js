@@ -38,38 +38,42 @@ module.exports = function(options) {
 		});
 	}
 
+	function sendEmail(html){
+		var nodemailer = require('nodemailer');
+		var gmailCredentials = JSON.parse(fs.readFileSync('./.gmail-credentials.json', 'utf8'));
+
+		var transporter = nodemailer.createTransport({
+			service: 'Gmail',
+			auth: gmailCredentials
+		});
+
+		var mailOptions = {
+			from: gmailCredentials.user, // sender address
+			to: gmailCredentials.user, // list of receivers
+			subject: 'Test Email Template  ✔', // Subject line
+			html:html
+		};
+
+		transporter.sendMail(mailOptions, function(error, info){
+			if(error){
+				console.log(error);
+			}else{
+				console.log('Message sent: ' + info.response);
+			}
+		});
+	}
+
 	gulp.task('serve', ['inject','watch'], function () {
 		browserSyncInit([options.tmp + '/serve', options.src]);
 	});
 
-	gulp.task('serve:dist', ['build'], function () {
-		browserSyncInit(options.dist);
+	gulp.task('test:dist', ['build'], function () {
+		sendEmail(cheerio.load(fs.readFileSync(options.dist + '/index.html')).html());
 	});
 
 	gulp.task('test', [], function () {
 		gulp.start('inject',function(){
-			var nodemailer = require('nodemailer');
-			var gmailCredentials = JSON.parse(fs.readFileSync('./.gmail-credentials.json', 'utf8'));
-
-			var transporter = nodemailer.createTransport({
-				service: 'Gmail',
-				auth: gmailCredentials
-			});
-
-			var mailOptions = {
-				from: gmailCredentials.user, // sender address
-				to: gmailCredentials.user, // list of receivers
-				subject: 'Test Email Template  ✔', // Subject line
-				html: cheerio.load(fs.readFileSync(options.tmp + '/serve/index.html'))('.email-template').parent().html()
-			};
-
-			transporter.sendMail(mailOptions, function(error, info){
-				if(error){
-					console.log(error);
-				}else{
-					console.log('Message sent: ' + info.response);
-				}
-			});
+			sendEmail(cheerio.load(fs.readFileSync(options.tmp + '/serve/index.html'))('.email-template').parent().html());
 		});
 	});
 };

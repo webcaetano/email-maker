@@ -7,6 +7,7 @@
 - [x] Add Gmail SMTP Test
 - [x] Create Documentation
 - [x] Create an Example
+- [x] Finish Build
 - [ ] Make Yeoman Generator based on this project for SASS / Less switch
 
 ### Requirements
@@ -23,6 +24,7 @@
 git clone https://github.com/webcaetano/email-maker.git
 cd email-maker
 npm i
+bower install
 ```
 
 ### Commands 
@@ -39,11 +41,28 @@ gulp test
 ```
 
 
+Build and send a email test for your inbox.
+```
+gulp test:dist
+```
+
 Create html file of your template 
 ```
 gulp build
 // or
 gulp 
+```
+
+### Structure 
+
+```
+/email-maker
+|
+|.gmail-credentials # <--- Add your gmail account here for SMTP test.
+| /src
+| + -- template.html # <--- Build your email template here
+| + -- /styles
+| + -- + -- index.scss # <--- Add your SCSS here.
 ```
 
 
