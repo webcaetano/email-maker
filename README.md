@@ -8,6 +8,7 @@
 - [x] Create Documentation
 - [x] Create an Example
 - [x] Finish Build
+- [ ] Auto host images on imgur
 - [ ] Make Yeoman Generator based on this project for SASS / Less switch
 
 ### Requirements
