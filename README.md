@@ -66,6 +66,7 @@ gulp
 | + -- + -- index.scss # <--- Add your SCSS here.
 ```
 
+Unfortunatly imgur not suport .SVG ![facepalm](http://chatslang.com/images/shortcuts/twitch/admins/failfish.png)
 
 ---------------------------------
 
