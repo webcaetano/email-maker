@@ -8,7 +8,7 @@
 - [x] Create Documentation
 - [x] Create an Example
 - [x] Finish Build
-- [ ] Finish [Auto host images](https://github.com/webcaetano/gulp-image-autohost) on imgur
+- [x] Finish [Auto host images](https://github.com/webcaetano/gulp-image-autohost) on imgur
 - [ ] Make Yeoman Generator based on this project for SASS / Less switch
 
 ### Requirements
